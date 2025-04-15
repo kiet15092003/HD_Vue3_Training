@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@tanstack/vue-query": "^5.71.0",
@@ -24,17 +26,22 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/vue": "^8.1.0",
     "@types/js-cookie": "^3.0.6",
     "@types/lodash": "^4.17.16",
     "@types/module-alias": "^2.0.4",
     "@types/node": "^22.13.10",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/compiler-sfc": "^3.5.13",
+    "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
+    "jsdom": "^26.1.0",
     "module-alias": "^2.2.3",
     "sass": "^1.86.3",
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
+    "vitest": "^3.1.1",
     "vue-tsc": "^2.2.4"
   },
   "_moduleAliases": {
