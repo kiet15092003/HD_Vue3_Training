@@ -1,0 +1,112 @@
+@workspace Implement a Post CRUD service call and fetch with pagination by following my instructions, folder structure, clean achitectures and these requirements:
+
+## General Rules
+- All file created follow the CamelCase name rule.
+- Always use Vue 3 with TypeScript (.vue and .ts files). 
+- Follow Vue and TypeScript best practices, adhering to maintainability and scalability principles.
+- Ensure code is modular, reusable, and easy to test.
+- Use ESLint and Prettier for code formatting and linting.
+- **Important** Ensure your implemented is enough for my requirements and just edit or add in file without only show the code.
+- **Important** follow the structure of service and store in the useUserListStore to handle error and loading data
+- Do not use alias imports, use relative path instead **important**
+- Always explicitly import required Vue functions based on their usage in the file.
+- Avoid unnecessary imports; only import what is used in the script.
+- Remember import type keyword in model interface
+- Use sass with scoped
+- Follow Vue 3 Composition API with setup() and avoid legacy patterns like $emit. **Important**
+
+## Define a new service file to handle crud of data with data have fields: 
+id: string;
+title: string;
+body: string;
+
+- Handle multiple models for different purposes CRUD.
+- Services should be stored in src/services.
+- Each service should be responsible for API communication related to a specific feature.
+- Use services/http/apiClient to make HTTP requests and centralize API calls in these services.
+- Handle authentication and token management inside a global service.
+- Implement error handling using try/catch blocks.
+- If have paginaton, follow params and result type in models/Common
+- If `response.data.success` is false, throw an error with the response's `error` message.
+- Use the Error type instead of any.
+
+## Model Rules
+- Models implement should be stored in src/models.
+- Each model should define TypeScript interfaces for the corresponding API data structures.
+- Use consistent naming conventions and follow domain-driven design principles.
+- Dont define new model that overlap the models defined in Common, just use these defined models.
+
+@workspace Implement required components needed to management Post with pagedResult and pagedParams state in Admin Layout with Admin Role following my project’s folder structure, clean architecture principles, and these requirements: 
+
+### Apply Vue Query for API Data Fetching & Caching
+- Use Vue Query v4 (@tanstack/vue-query) to fetch and cache data.
+- Store API results in Vue Query, ensuring automatic refetching and caching.
+- Define API queries dynamically based on pagedParams.
+- Use Vue Query’s useMutation for Create, Update, and Delete actions.
+
+### Apply the Pinia Store for datas:
+- Pinia should manage or store UI-related state (e.g., selected item, modal visibility).
+- Use Pinia for state management.
+- Define stores inside src/stores, organized by feature (e.g., Auth, data).
+- Use actions for business logic and mutations for state updates.
+- **Important:** The store should use the object-based `defineStore` structure with a `state` function and `actions` object, `getter`, **not** the composition API.
+
+### 1. Fetch & Display Data (Using Vue Query & Pinia) 
+- Fetch API data using Vue Query v4 (@tanstack/vue-query) and re-fetch when search pagedParam change. 
+- Read pagedParam state from Pinia for consistency across components.
+
+### 2. Implement CRUD Operations  
+- Use Vue Query’s v4 (@tanstack/vue-query) useMutation for Create, Update, and Delete actions.  
+- Automatically invalidate and refetch data after mutations.
+- Optimize performance by avoiding unnecessary re-fetching and using debounced in lodash search input.
+
+### 4. Component Structure  
+- Store in src/components and base on role
+- **List** (Parent Component)  
+	- Fetches data from Vue Query v4 (@tanstack/vue-query).
+	- Displays a list of Card components.
+	- Handles new element creation.
+
+- **card** (Child Component)  
+	- Displays an individual item’s details.
+ 	- Includes Edit & Delete buttons.
+	- Opens a Modal for editing or deleting.
+
+- **modal**  
+	- Reusable modal for editing items.
+	- Inputs for title and body.
+	- Handles update submission via Vue Query Mutations.
+
+@workspace Implement new router for Post Admin Layout with Admin Role and update navbar following my project’s folder structure, clean architecture principles, and these requirements: 
+
+### . Vue Router Integration  
+- **Lazy-load the component** and register a route.  
+- Restrict access to **authenticated** in the suitable **role**.  
+- Apply the correct layout for role pages.  
+- Add a link to this component in the **Navbar** of correct role
+
+###  Navbar Management Rules
+- If modifying routes (router.ts), ensure the following:
+- New routes should be added to the appropriate Navbar component inside the suitable folder based on user roles.
+- Example:
++ Customer-related routes should be added to NavBar.vue inside the src/component/Customer
++ Admin-related routes should be added to NavBar.vue inside the src/component/Admin
+- Do not add another navbar
+- Do not add navigation links inside layout files (e.g., CustomerLayout.vue). Instead, update the Navbar component inside the correct Role component.
+- When adding a new route, do not use the lazy import, instead, use normal import with relatie path **important**
+- If authentication is required, add the proper meta fields.
+
+### Routing Rules
+- Use Vue Router and define routes.
+- Routes should be structured based on feature areas.
+- Do not use lazy imports in component, just import first then use it.
+- Use meta fields to define authentication, layout, and role-based access control.
+- Ensure explicit imports for Vue Router functions.
+- When defining routes:
++ Always assign a layout in the meta field for consistency.
++ Define role-based access and authentication using the meta field.
+
+## Global spinner:
+ i want to make the global spinner to management the loading status and i want to use it in all the case when process the data
+
+

@@ -1,0 +1,59 @@
+# ------------------------
+# ASP.NET Core (.NET)
+# ------------------------
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.dbmdl
+*.pdb
+*.cache
+*.log
+*.vs/
+.vscode/
+TestResults/
+project.lock.json
+project.fragment.lock.json
+.vs/
+
+# User-specific files
+*.swp
+*.bak
+*.tmp
+*.userprefs
+
+# Rider
+.idea/
+
+# Resharper
+*.DotSettings.user
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# DotCover
+*.dotCover
+
+# Local environment secrets
+secrets.json
+
+# ------------------------
+# Node/Vue 3 (ClientApp)
+# ------------------------
+ClientApp/node_modules/
+ClientApp/dist/
+ClientApp/.env.local
+ClientApp/.env.*.local
+ClientApp/npm-debug.log*
+ClientApp/yarn-debug.log*
+ClientApp/yarn-error.log*
+ClientApp/pnpm-debug.log*
+
+# Editor configs
+ClientApp/.idea/
+ClientApp/.vscode/
+
+# OS-generated files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,6 @@
+@DemoVueJS_HostAddress = http://localhost:5010
+
+GET {{DemoVueJS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
